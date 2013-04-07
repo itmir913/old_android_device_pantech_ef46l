@@ -36,15 +36,19 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_ICS_COMPAT
 # Init
 TARGET_PROVIDES_INIT_RC := true
 
-# Include path
+################
+# Include path #
+################
 # If There are build errors, Delete # please
+#
 #TARGET_SPECIFIC_HEADER_PATH := device/pantech/ef46l/include
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
-# Bluetooth
+# custom Bluetooth.c
 TARGET_CUSTOM_BLUEDROID := ../../../device/pantech/ef46l/bluetooth/bluetooth.c
+# bluetooth.txt by Mir
 BOARD_BLUEDROID_VENDOR_CONF := device/pantect/ef46l/bluetooth/vnd_ef46l.txt
 
 # Vold
@@ -128,5 +132,5 @@ TARGET_ARCH := arm
 #BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 #BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 
-# MediaScaning & Telephone Sound
+# MediaScaning & Telephone Sound (on the hPa's notice)
 BOARD_WANTS_EMMC_BOOT := true

@@ -41,7 +41,7 @@ TARGET_PROVIDES_INIT_RC := true
 ################
 # If There are build errors, Delete # please
 #
-#TARGET_SPECIFIC_HEADER_PATH := device/pantech/ef46l/include
+TARGET_SPECIFIC_HEADER_PATH := device/pantech/ef46l/include
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
