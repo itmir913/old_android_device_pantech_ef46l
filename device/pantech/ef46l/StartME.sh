@@ -16,6 +16,7 @@ sleep 0.5
 
 # PATH DEVICE
 DEVICE=ef46l
+VENDOR=pantech
 
 # ril PATH
 cp ./ril/telephony/java/com/android/internal/telephony/SkyQualcommRIL.java ../../../frameworks/opt/telephony/src/java/com/android/internal/telephony
@@ -28,30 +29,44 @@ mkdir -p ../../../out/target/product/$DEVICE/obj/KERNEL_OBJ/usr
 
 # ERROR FIX - Symlink
 # ERROR : prebuilts/gcc/linux-x86/host/i686-linux-glibc2.7-4.6/bin/../sysroot/usr/include/bits/byteswap.h:22:3: error: #error "Never use <bits/byteswap.h> directly; include <byteswap.h> instead."
-if [ ! -s /usr/include/bits ]; then
-sudo mkdir -p /usr/include/bits
-sudo ln -s /usr/include/byteswap.h /usr/include/bits/byteswap.h
-sudo ln -s /usr/include/linux/stat.h /usr/include/bits/stat.h
+#if [ ! -s /usr/include/bits ]; then
+#	sudo mkdir -p /usr/include/bits
+#	sudo ln -s /usr/include/byteswap.h /usr/include/bits/byteswap.h
+#	sudo ln -s /usr/include/linux/stat.h /usr/include/bits/stat.h
+#	sudo cp -f ./ClentSocket/byteswap.h /usr/include/bits/byteswap.h
+#	#sudo cp -f ./ClentSocket/stat.h /usr/include/bits/stat.h
+#else
+#	if [ ! -s /usr/include/bits/byteswap.h ]; then
+#	#sudo cp -f ./ClentSocket/byteswap.h /usr/include/bits/byteswap.h
+#	sudo ln -s /usr/include/byteswap.h /usr/include/bits/byteswap.h
+#	fi
+#	if [ ! -s /usr/include/bits/stat.h ]; then
+#	#sudo cp -f ./ClentSocket/stat.h /usr/include/bits/stat.h
+#	sudo ln -s /usr/include/linux/stat.h /usr/include/bits/stat.h
+#	fi
+#fi
+
+
+# ERROR FIX - include
+# ERROR : error: #error "Never include <bits/byteswap.h> directly; use <byteswap.h> instead."
+#         error: #error "Never include <bits/stat.h> directly; use <sys/stat.h> instead."
+#
+if [ ! -s /usr/include/bits/byteswap.h ]; then
+	sudo cp -f ./usrinclude/endian.h /usr/include
 fi
 
-# ERROR FIX - include - ClentSocket
-# ERROR : error: '__bswap_16' was not declared in this scope
-# prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6/sysroot/usr/include/bits/byteswap.h : __bswap_16, The File(byteswap.h)is /usr/include
-#
-#### sgrep __bswap_16
-#whdghks913@Ubuntu:~/cm-10.1/system$ sgrep __bswap_16
-#./prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6/sysroot/usr/include/netinet/in.h:379:#   #define ntohs(x)	__bswap_16 (x)
-#./prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6/sysroot/usr/include/netinet/in.h:381:#   define htons(x)	__bswap_16 (x)
-#./prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6/sysroot/usr/include/bits/byteswap.h:35:# define __bswap_16(x) \
-#./prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6/sysroot/usr/include/bits/byteswap.h:48:# define __bswap_16(x) \
-#./prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6/sysroot/usr/include/byteswap.h:30:#define bswap_16(x) __bswap_16 (x)
-cp ./ClentSocket/* ../../../cts/suite/audio_quality/lib/include
+if [ ! -s /usr/include/bits/stat.h ]; then
+	sudo cp -f ./usrinclude/fcntl.h /usr/include
+fi
+
+# ERROR FIX - no such file
+# ERROR : /usr/include/regex.h:26:31: fatal error: gnu/option-groups.h: No such file or directory
+if [ ! -s /usr/include/gnu/option-groups.h ]; then
+	sudo cp -f ./usrinclude/regex.h /usr/include
+fi
 
 
 echo ""
-echo "    Finished by Source PATCH"
+echo "    Finished Source PATCH and Error Fix"
 echo ""
-echo "    Script Will start setup-makefiles.sh"
-
-./setup-makefiles.sh
 sleep 1
