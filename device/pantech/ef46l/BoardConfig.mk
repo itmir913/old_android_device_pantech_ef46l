@@ -128,9 +128,9 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 TARGET_ARCH := arm
 
 # hostapd error fix
-#CONFIG_DRIVER_NL80211 := true
-#BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-#BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+CONFIG_DRIVER_NL80211 := true
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
 
 # MediaScaning & Telephone Sound (on the hPa's notice)
 BOARD_WANTS_EMMC_BOOT := true

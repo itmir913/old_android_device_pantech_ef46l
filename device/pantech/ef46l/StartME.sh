@@ -67,6 +67,10 @@ if [ ! -s /usr/include/gnu/option-groups.h ]; then
 	sudo cp -f ./usrinclude/regex.h /usr/include
 fi
 
+# hostapd error fix
+cp -f ./hostapd/android.config ../../../external/wpa_supplicant_8/hostapd
+
+# Package for cm-10.1
 sudo apt-get -y install schedtool
 
 echo ""
