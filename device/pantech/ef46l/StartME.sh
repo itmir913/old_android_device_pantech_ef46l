@@ -23,6 +23,8 @@ cp ./ril/telephony/java/com/android/internal/telephony/SkyQualcommRIL.java ../..
 
 # install bdroid_buildcfg.h
 cp ./bluetooth/bdroid_buildcfg.h ../../../external/bluetooth/bluedroid/audio_a2dp_hw
+cp ./bluetooth/bdroid_buildcfg.h ../../../external/bluetooth/bluedroid/hci/include/
+cp ./bluetooth/bdroid_buildcfg.h ../../../external/bluetooth/bluedroid/include/
 
 # ERROR FIX - no rules to make "out/target/product/$DEVICE/obj/KERNEL_OBJ/usr"
 mkdir -p ../../../out/target/product/$DEVICE/obj/KERNEL_OBJ/usr
@@ -65,7 +67,6 @@ if [ ! -s /usr/include/gnu/option-groups.h ]; then
 	sudo cp -f ./usrinclude/regex.h /usr/include
 fi
 
-# package for cm-10.1 brunch
 sudo apt-get -y install schedtool
 
 echo ""
