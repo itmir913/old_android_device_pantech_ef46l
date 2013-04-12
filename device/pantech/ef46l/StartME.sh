@@ -65,6 +65,8 @@ if [ ! -s /usr/include/gnu/option-groups.h ]; then
 	sudo cp -f ./usrinclude/regex.h /usr/include
 fi
 
+# package for cm-10.1 brunch
+sudo apt-get -y install schedtool
 
 echo ""
 echo "    Finished Source PATCH and Error Fix"
