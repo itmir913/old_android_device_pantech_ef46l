@@ -70,6 +70,10 @@ fi
 # hostapd error fix
 cp -f ./hostapd/android.config ../../../external/wpa_supplicant_8/hostapd
 
+if [ ! -s ../../../vendor/cm/proprietary/Term.apk ]; then
+../../../vendor/cm/get-prebuilts
+fi
+
 # Package for cm-10.1
 sudo apt-get -y install schedtool
 
