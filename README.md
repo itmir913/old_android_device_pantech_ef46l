@@ -10,6 +10,13 @@ Source Patch is StartME.sh
 Edit by Mir(whdghks913)
 
 
+-liboverlay or libexternal error happend >> Add '#' in BoardConfig, Include path
+-And Error Fix >> Delete '#' in BoardConfig, Include path
+
+If you also error, Start mmm building
+mmm hardware/qcom/display
+
+
 Workings :
 I don't know...
 

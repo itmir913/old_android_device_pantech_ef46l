@@ -40,8 +40,12 @@ TARGET_PROVIDES_INIT_RC := true
 # Include path #
 ################
 # If There are build errors, Delete # please
+################
+# liboverlay or libexternal error happend >> Add the '#'
+# And Error Fix then Delete the '#'
 #
 TARGET_SPECIFIC_HEADER_PATH := device/pantech/ef46l/include
+
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
