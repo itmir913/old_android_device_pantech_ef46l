@@ -62,7 +62,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGE_SIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom androidboot.carrier=LGT-KOR user_debug=31 msm_rtb.filter=0x3F loglevel=0 androidboot.emmc=true
-BOARD_RAMDISK_ADDR := 0x82400000
+BOARD_MKBOOTIMG_ARGS := 0x82400000
 
 # Vibrator
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/pantech/ef46l/vibrator/vibrator.c
